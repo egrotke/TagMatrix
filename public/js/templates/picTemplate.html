@@ -1,0 +1,28 @@
+<% _.each(pics.sort(), function(pic, index) {   index = index + (page-1)*perPage;  %>
+
+          <div id="pic-thumb<%= index %>" class="pic-thumb" >
+          <div class='flip-container'  data-index="<%= index %>"  ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper">
+                <div class="front">
+                    <span class="like-icon  count-<%= pic.get('likes') %>" data-name='<%= tagName %>' title="like/unlike this pic" data-url='<%= pic.get('smallURL')%>'><i class="fa fa-heart"></i></span>
+                    <a class="thumb-link" data-index="<%= index %>" href="#" >
+                    <img src="<%= pic.get('thumbURL') %>"></a>
+                </div>
+                <div class="back">
+                </div>
+              </div>
+            </div>
+            <div class="description">
+              <span class="like-icon  count-<%= pic.get('likes') %>" data-name='<%= tagName %>'  title="like/unlike this pic" data-url='<%= pic.get('smallURL')%>'><i class="fa fa-heart"></i></span>
+                   <h4><%= pic.get('title') %></h4>
+                    <div class="med-pic"><img src="<%= pic.get('smallURL') %>" /></div>
+                    <span class="exclude-owner"><i class="fa fa-minus-circle"   title="Exclude/Include User from seach"></i></span>
+                     <p>photo by <a href="<%= pic.get('ownerURL')%>" target="_blank"><%= pic.get('owner')%></a> </p>
+                     <p> <a href="<%= pic.get('flickrURL')%>" target="_blank">View on Flickr</a></p>
+                     <p> # of views: <%= pic.get('views')%> </p>
+                  <p> <%= pic.get('description')%></p>
+                    <ul class='tags'><%= pic.get('tagList') %></ul>
+            </div>
+              
+            </div>
+             <% }); %>

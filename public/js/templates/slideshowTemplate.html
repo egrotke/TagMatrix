@@ -1,0 +1,15 @@
+         <% _.each(pics, function(pic, index) { 
+
+          index = index + (page-1)*perPage;
+          %>
+
+            <div id="bg-pic<%= index %>"  <%= pic.get('bigUrlAttr')%> class="bg-pic" >
+            </div>
+
+          <div id="pic-info<%= index %>"  class="pic-info">
+                <h3><%=  pic.get('title') %></h3>
+                <p>photo by <a href="<%= pic.get('ownerURL')%>" target="_blank"><%= pic.get('owner')%></a>  |  <a href="<%= pic.get('flickrURL')%>" target="_blank">View on Flickr</a></p>
+                <p> # of views: <%= pic.get('views')%> </p>
+                <p> <%= pic.get('description')%></p>
+            </div>
+          <%  }); %>

@@ -1,0 +1,10 @@
+<div class="label label-default tag-queue">Curated Tags</div>
+            <% _.each(categories.reverse(), function(category) {  %>
+             <ul id="<%= category.get('name').toLowerCase().replace(' ', '-') %>" class="<%= category.get('expanded') %>">
+               <span class="category-expander <%= category.get('expanded') %>" data-name='<%= category.get("name") %>'>
+                  <i class="fa fa-caret-left" title="Expand/Hide Group"></i></span>
+               <span class="categoryRating count-<%= category.get('queued') %>"  data-name='<%= category.get('name') %>'>
+                    <i class="fa fa-plus-circle"   title="Add/Remove group from Queue"></i></span>
+               <button type="button" class="btn btn-xs btn-success category" title="Load Slideshow now"><%= category.get('name') %></button>
+             </ul>
+            <% }); %>

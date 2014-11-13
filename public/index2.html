@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="images"></div>
+ 
+<script>
+(function() {
+  var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+  $.getJSON( flickerAPI, {
+    api_key: "78fc47e887da553c5b397c61822c5854",
+    tags: "bikini",
+    tagmode: "any",
+    sort: "INTERESTINGNESS_DESC",
+    format: "json",
+    page: 3
+  })
+    .done(function( data ) {
+      console.log(data);
+      $.each( data.items, function( i, item ) {
+        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+        /*if ( i === 3 ) {
+          return false;
+        }*/
+      });
+    });
+})();
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,8 @@
+	<a class="tag tilter <%= tag.get('hasPic') %>" href="#"   style="opacity: 1; background-image: url( <%= tag.get('picURL') %>  );">
+                    
+    	<span class="rating count-<%= tag.get('queued') %>"  data-name='<%= tag.get('name') %>'>
+        	<i class="fa fa-plus-circle"   title="Add/Remove from Queue"></i>
+    	</span>
+                   
+    	<button type="button" class="btn btn-xs btn-info <%= tag.get('selected') %>" title="Load Slideshow now" data-category="<%= tag.get('name') %>"><%= tag.get('name') %></button>
+    </a>

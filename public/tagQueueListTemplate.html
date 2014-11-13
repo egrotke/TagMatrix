@@ -1,0 +1,14 @@
+          <div class='tag-queue'>
+            <span class="queue-expander expanded" >
+              <i class="fa fa-caret-left" title="Expand/Hide Group"></i>
+            </span>
+            <span class="label label-default">Tag Queue </span> 
+          </div>
+          
+           <% _.each(tagQueue, function(tag, index) { %>
+            <li class="tilt-container"><a class="tag tilter <%= tag.get('hasPic') %>  <%= tag.get('selected') %>" href="#"  data-name='<%= tag.get('name') %>'  style="opacity: 1; background-image: url( <%= tag.get('picURL') %>  );">
+             <span class="rating count-<%= tag.get('queued') %>"  data-name='<%= tag.get('name') %>' data-index='<%= index %>'>
+                      <i class="fa fa-minus-circle"   title="Add/Remove from Queue"></i></span>
+            <span class="like-icon  count-<%= tag.get('likes') %>" data-name='<%= tag.get('name') %>'><i class="fa fa-heart"></i></span>
+            <button type="button" class="btn btn-xs btn-info <%= tag.get('selected') %>" data-category="<%= tag.get('name') %>"><%= tag.get('name') %></button></a></li>
+         <% }); %>
