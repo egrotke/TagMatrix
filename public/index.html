@@ -50,195 +50,66 @@
             &nbsp;
             <input type="checkbox" name="sort-checkbox" data-on-text="interest" data-off-text="relevance" checked></div>
 
-          <div class="sortdir-checkbox">
-            <span class="label label-default">Sort direction:</span>
-            &nbsp;
-            <input type="checkbox" name="sortdir-checkbox" data-on-text="desc" data-off-text="asc" checked></div>
+            <div class="sortdir-checkbox">
+              <span class="label label-default">Sort direction:</span>
+              &nbsp;
+              <input type="checkbox" name="sortdir-checkbox" data-on-text="desc" data-off-text="asc" checked></div>
 
-          <div class="tagmode-checkbox">
-            <span class="label label-default">Tag mode:</span>
-            &nbsp;
-            <input type="checkbox" name="tagmode-checkbox" data-on-text="any" data-off-text="all"></div>
+              <div class="tagmode-checkbox">
+                <span class="label label-default">Tag mode:</span>
+                &nbsp;
+                <input type="checkbox" name="tagmode-checkbox" data-on-text="any" data-off-text="all"></div>
 
-          <div class="tagsOrText-checkbox">
-            <span class="label label-default">Search for:</span>
-            &nbsp;
-            <input type="checkbox" name="tagmode-checkbox" data-on-text="tags" data-off-text="text" checked></div>
-        </div>
-      </form>
-    </header>
-
-    <div id="slide-controls">
-      <div class="search-term">
-        <h4 class="title"></h4>
-        <h4 class="search-count"></h4>
-      </div>
-      <div class="refresher">
-        <i class=" fa fa-refresh fa-spin fa-lg"></i>
-      </div>
-      <!-- <button id="slideshow-prev"   class="btn btn-info"   title="Load Previous Slideshow">
-      <i class="fa fa-backward"></i>
-    </button>
-    -->
-    <button id="slideshow-button"  class="btn  btn-info" title="Play/Pause Slideshow">
-      <i class="fa fa-pause" ></i>
-      <i class="fa fa-play"></i>
-    </button>
-    <button id="slideshow-next"   class="btn btn-info"  title="Load Next Slideshow in Queue">
-      <i class="fa fa-forward" ></i>
-    </button>
-  </div>
-
-  <div id="intro-logo">
-    <h1>
-      <i class="fa fa-bolt "></i></i> 
-  </h1>
-  <h2>Tag Matrix</h2>
-</div>
-
-<div id="tags" >
-  <div id="all-tags">
-    <ul id="tag-queue" class="tags pic expanded"></ul>
-    <ul id="recommended-tags" class="tags pic expanded"></ul>
-    <ul id="curated-tags" class="tags"></ul>
-  </div>
-</div>
-<div id="pic-container">
-  <div id="pics">
-    <div id="thumbs-bottom"></div>
-  </div>
-</div>
-
-<div id="slideshow">
-  <div id="bg-pic0" class="bg-pic" style="opacity: 1; background-image: url(img/bg1.jpg); background-size:cover;"></div>
-</div>
-
-<!-- <button id="load-more"  class="btn btn-info"  title="Load More Thumbs">
-<i class="fa fa-refresh" ></i>
-</button>
--->
-<script type="text/template" id="pic-thumb-template">
-          
-         <% _.each(pics.sort(), function(pic, index) {  
-
-          index = index + (page-1)*perPage;
-          %>
-
-          <div id="pic-thumb<%= index %>" class="pic-thumb" >
-            <div class='flip-container'  data-index="<%= index %>"  ontouchstart="this.classList.toggle('hover');">
-              <div class="flipper">
-                <div class="front">
-                  <span class="like-icon  count-<%= pic.get('likes') %>" data-name='<%= tagName %>' title="like/unlike this pic" data-url='<%= pic.get('smallURL')%>'><i class="fa fa-heart"></i></span>
-                  <a class="thumb-link" data-index="<%= index %>" href="#" >
-                    <img src="<%= pic.get('thumbURL') %>"></a>
-                  </div>
-                  <div class="back"></div>
+                <div class="tagsOrText-checkbox">
+                  <span class="label label-default">Search for:</span>
+                  &nbsp;
+                  <input type="checkbox" name="tagmode-checkbox" data-on-text="tags" data-off-text="text" checked></div>
                 </div>
+              </form>
+            </header>
+
+            <div id="slide-controls">
+              <div class="search-term">
+                <h4 class="title"></h4>
+                <h4 class="search-count"></h4>
               </div>
-              <div class="description">
-                <span class="like-icon  count-<%= pic.get('likes') %>" data-name='<%= tagName %>'  title="like/unlike this pic" data-url='<%= pic.get('smallURL')%>'><i class="fa fa-heart"></i></span>
-                <h4><%= pic.get('title') %></h4>
-                <div class="med-pic"><img src="<%= pic.get('smallURL') %>" /></div>
-                <span class="exclude-owner"><i class="fa fa-minus-circle"   title="Exclude/Include User from seach"></i></span>
-                <p>photo by <a href="<%= pic.get('ownerURL')%>" target="_blank"><%= pic.get('owner')%></a> </p>
-                <p> <a href="<%= pic.get('flickrURL')%>" target="_blank">View on Flickr</a></p>
-                <p> # of views: <%= pic.get('views')%></p>
-                <p> <%= pic.get('description')%></p>
-                <ul class='tags'><%= pic.get('tagList') %></ul>
+              <div class="refresher">
+                <i class=" fa fa-refresh fa-spin fa-lg"></i>
               </div>
-              
+
+              <button id="slideshow-button"  class="btn  btn-info" title="Play/Pause Slideshow">
+                <i class="fa fa-pause" ></i>
+                <i class="fa fa-play"></i>
+              </button>
+              <button id="slideshow-next"   class="btn btn-info"  title="Load Next Slideshow in Queue">
+                <i class="fa fa-forward" ></i>
+              </button>
             </div>
-            <% }); %></script>
 
-<script type="text/template" id="slideshow-template">
- <% _.each(pics, function(pic, index) { 
+            <div id="intro-logo">
+              <h1>
+                <i class="fa fa-bolt "></i></i> 
+              </h1>
+              <h2>Tag Matrix</h2>
+            </div>
 
-  index = index + (page-1)*perPage;
-  %>
+            <div id="tags" >
+              <div id="all-tags">
+                <ul id="tag-queue" class="tags pic expanded"></ul>
+                <ul id="recommended-tags" class="tags pic expanded"></ul>
+                <ul id="curated-tags" class="tags"></ul>
+              </div>
+            </div>
+            <div id="pic-container">
+              <div id="pics">
+                <div id="thumbs-bottom"></div>
+              </div>
+            </div>
 
-  <div id="bg-pic<%= index %>"  <%= pic.get('bigUrlAttr')%>class="bg-pic" ></div>
-
-  <div id="pic-info<%= index %>"  class="pic-info">
-    <h3><%=  pic.get('title') %></h3>
-    <p>photo by <a href="<%= pic.get('ownerURL')%>" target="_blank"><%= pic.get('owner')%></a>  |  <a href="<%= pic.get('flickrURL')%>" target="_blank">View on Flickr</a></p>
-    <p> # of views: <%= pic.get('views')%></p>
-    <p> <%= pic.get('description')%></p>
-  </div>
-  <%  }); %></script>
-
-<script type="text/template" id="curated-tags-template">
-  <div class="label label-default tag-queue">Curated Tags</div>
-  <% _.each(categories.reverse(), function(category) {  %>
-   <ul class="<%= category.get('expanded') %>">
-     <span class="category-expander <%= category.get('expanded') %>" data-name='<%= category.get("name") %>'>
-      <i class="fa fa-caret-left" title="Expand/Hide Group"></i></span>
-      <span class="categoryRating count-<%= category.get('queued') %>"  data-name='<%= category.get('name') %>'>
-        <i class="fa fa-plus-circle"   title="Add/Remove group from Queue"></i></span>
-        <button type="button" class="btn btn-xs btn-success category" title="Load Slideshow now"><%= category.get('name') %></button>
-        <% _.each(curatedTags.sort(), function(tag) { 
-          if (category.get('name') == tag.get('category')) { %>
-            <li class="tilt-container"><a class="tag tilter <%= tag.get('hasPic') %>" href="#"   style="opacity: 1; background-image: url( <%= tag.get('picURL') %>  );">
-              
-              <span class="rating count-<%= tag.get('queued') %>"  data-name='<%= tag.get('name') %>'>
-                <i class="fa fa-plus-circle"   title="Add/Remove from Queue"></i>
-              </span>
-              
-              <button type="button" class="btn btn-xs btn-info <%= tag.get('selected') %>" title="Load Slideshow now" data-category="<%= tag.get('name') %>"><%= tag.get('name') %></button>
-            </a>
-          </li>
-          <%  } });  %></ul>
-      <% }); %></script>
-
-<script type="text/template" id="tag-list-item-template">
-  <li class="tilt-container"><a class="tag tilter <%= tag.get('hasPic') %>  <%= tag.get('selected') %>" href="#"  data-name='<%= tag.get('name') %>'  style="opacity: 1; background-image: url( <%= tag.get('picURL') %>  );">
-   <span class="rating count-<%= tag.get('queued') %>"  data-name='<%= tag.get('name') %>' data-index='<%= index %>'>
-    <i class="fa fa-minus-circle"   title="Add/Remove from Queue"></i></span>
-    <span class="like-icon  count-<%= tag.get('likes') %>" data-name='<%= tag.get('name') %>'><i class="fa fa-heart"></i></span>
-    <button type="button" class="btn btn-xs btn-info <%= tag.get('selected') %>" data-category="<%= tag.get('name') %>"><%= tag.get('name') %></button></a></li>
-  </script>
-
-<script type="text/template" id="tag-list-header-template">
-    <div class='tag-list-header'>
-      <span class="queue-expander expanded" >
-        <i class="fa fa-caret-left" title="Expand/Hide Group"></i>
-      </span>
-      <span class="label label-default">Tag Queue </span> 
-    </div>
-  </script>
-
-<script type="text/template" id="tag-queue-template">
-    
-    <div class='tag-queue'>
-      <span class="queue-expander expanded" >
-        <i class="fa fa-caret-left" title="Expand/Hide Group"></i>
-      </span>
-      <span class="label label-default">Tag Queue </span> 
-    </div>
-    
-    <% _.each(tagQueue, function(tag, index) { %>
-      <li class="tilt-container"><a class="tag tilter <%= tag.get('hasPic') %>  <%= tag.get('selected') %>" href="#"  data-name='<%= tag.get('name') %>'  style="opacity: 1; background-image: url( <%= tag.get('picURL') %>  );">
-       <span class="rating count-<%= tag.get('queued') %>"  data-name='<%= tag.get('name') %>' data-index='<%= index %>'>
-        <i class="fa fa-minus-circle"   title="Add/Remove from Queue"></i></span>
-        <span class="like-icon  count-<%= tag.get('likes') %>" data-name='<%= tag.get('name') %>'><i class="fa fa-heart"></i></span>
-        <button type="button" class="btn btn-xs btn-info <%= tag.get('selected') %>" data-category="<%= tag.get('name') %>"><%= tag.get('name') %></button></a></li>
-        <% }); %></script>
-
-<script type="text/template" id="related-tags-template">
-    <span class="label label-default"<h5>Related Tags</h5></span>
-
-    <% _.each(tags.reverse(), function(tag) { %>
-      <a class="tag" href="#">
-        <button type="button" class="btn btn-xs btn-info"><%= tag.get('name') %></button>
-        <span class="counter"><%= tag.get('count') %></span></a>
-        <% }); %></script>
-
-<!-- <script src="js/lib/jquery-min.js"></script>
-<script src="js/lib/underscore-min.js"></script>
-<script src="js/lib/backbone-min.js"></script>
-<script src="js/lib/bootstrap-switch.js"></script>
-<script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
-<script src="js/fullApp.js"></script>
--->
-</div>
-</body>
-</html>
+            <div id="slideshow">
+              <div id="bg-pic0" class="bg-pic" style="opacity: 1; background-image: url(img/bg1.jpg); background-size:cover;"></div>
+            </div>
+            
+          </div>
+        </body>
+        </html>
