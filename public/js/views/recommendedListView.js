@@ -17,18 +17,38 @@ define([
       "click .queue-expander": "queueExpander"
     },
     initialize: function() {
-      this.collection.reset();
-      if (this.options.tags.length > 0) {
-        this.collection.add(this.options.tags.where({
-          'likes': 1
-        }));
-      }
-      this.collection.reset(this.collection.shuffle(), {
-        silent: true
+      var that = this;
+
+      this.collection.fetch({
+        success: function(response, xhr) {
+          var tagQueue;
+
+          console.log('Success Fetching Recommended Tags: ' + response.length);
+          this.collection.reset(this.collection.shuffle(), {
+            silent: true
+          });
+
+          numTags = response.length;
+          that.render();
+        },
+        error: function(response, xhr) {
+          console.log('Error Fetching Tags: ' + response.url);
+          if (this.options.tags.length > 0) {
+            this.collection.add(this.options.tags.where({
+              'likes': 1
+            }));
+
+          }
+        }
       });
+
       this.collection.bind("change", this.render, this);
       this.collection.bind("add", this.render, this);
       this.collection.bind("remove", this.render, this);
+
+      $('.tagsButton').on('mouseup', function(e) {
+        console.log(JSON.stringify(that.collection.toJSON(), undefined, 2));
+      });
     },
     render: function() {
       var recommendedTemplate;
@@ -68,7 +88,8 @@ define([
       }
     },
     tagClick: function(e) {
-      var clickedEL = $(e.currentTarget), tagName;
+      var clickedEL = $(e.currentTarget),
+        tagName;
       e.preventDefault();
 
       tagName = e.currentTarget.innerHTML;
@@ -107,13 +128,13 @@ define([
       })[0];
 
 
-        clickedEL.removeClass('liked');
-        curatedTagModel.set({
-          'likes': 0
-        });
-        thisTagModel.set({
-          'likes': 0
-        });
+      clickedEL.removeClass('liked');
+      curatedTagModel.set({
+        'likes': 0
+      });
+      thisTagModel.set({
+        'likes': 0
+      });
       this.collection.remove(this.collection.find(function(model) {
         return model.get('name') == tagName;
       }));

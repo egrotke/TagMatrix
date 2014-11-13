@@ -7,13 +7,14 @@ define([
   'views/recommendedListView',
   'models/tagModel',
   'collections/tagCollection',
+  'collections/recommendedTagCollection',
   'views/tagListItemView',
   'collections/picCollection',
   'views/picListView',
   'headerHandlers',
   'TM_Globals'
 
-], function($, _, Backbone, TagQueueListView, RecommendedListView, TagModel, TagCollection, TagListItemView, PicCollection, PicListView, HeaderHandlers, TM) {
+], function($, _, Backbone, TagQueueListView, RecommendedListView, TagModel, TagCollection, RecommendedTagCollection, TagListItemView, PicCollection, PicListView, HeaderHandlers, TM) {
 
   var TagListView = Backbone.View.extend({
     el: $("#curated-tags"),
@@ -44,9 +45,7 @@ define([
           that.render();
           that.initPicView();
 
-          $('.tagsButton').on('mouseup', function(e) {
-            console.log(JSON.stringify(that.collection.toJSON(), undefined, 2));
-          });
+          
         },
         error: function(response, xhr) {
           console.log('Error Fetching Tags: ' + response.url);
@@ -67,7 +66,7 @@ define([
       this.initRecomendedView();
     },
     initRecomendedView: function() {
-      this.recommendedQueue = new TagCollection();
+      this.recommendedQueue = new RecommendedTagCollection();
       this.recommendedListView = new RecommendedListView({
         collection: this.recommendedQueue,
         tags: this.collection,
