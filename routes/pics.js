@@ -18,8 +18,8 @@ exports.findAll = function(req, res) {
 
 	var Flickr = require("flickrapi"),
 		flickrOptions = {
-		  api_key: "78fc47e887da553c5b397c61822c5854",
-		  secret: 'ce98739ce741af83'
+		  api_key: "XXXXXXXXXXX",
+		  secret: 'XXXXXX'
 	};
 
 	Flickr.tokenOnly(flickrOptions, function(error, flickr) {
